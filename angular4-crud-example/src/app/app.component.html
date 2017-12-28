@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>User List</h2>
+ <form [formGroup]="myform">
+<div class="col-xs-2">
+  <input type="text" placeholder="Email" class="form-control"  formControlName="email" required>
+    <!-- <div class="form-control-feedback"
+           *ngIf="email.errors && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required">Email is required</p>
+    </div> -->
+  </div>
+<div class="col-xs-2">
+  <input type="text" placeholder="Name" class="form-control"  formControlName="name" required>
+  <!--  <div class="form-control-feedback"
+           *ngIf="name.errors && (name.dirty || email.touched)">
+        <p *ngIf="name.errors.required">Name is required</p>
+    </div> -->
+</div>
+  <button type="button" [disabled]="!myform.valid" class="btn btn-primary" (click)="addUser()">ADD</button>     
+  </form>      
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersList">
+        <td>{{user.email}}</td>
+        <td>{{user.first_name}}</td>
+        <td><button class="btn btn-primary btn-xs" (click)="deleteUser(user.id)">Delete</button></td>
+       </tr>
+    </tbody>
+  </table>
+</div>
