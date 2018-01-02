@@ -9,15 +9,21 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  usersList = [];
+  usersList = {};
   myform;
   constructor(private http: HttpClient){
   }
 
   ngOnInit() {
     this.http.get('http://localhost:2149/api/users/users_list').subscribe(result => {
-      console.log(result);
-      this.usersList = result.data.items.docs;	
+      console.log("result",result);
+
+      if(result)
+      {
+        this.usersList = result;	
+        
+      }
+      
       
       
     });

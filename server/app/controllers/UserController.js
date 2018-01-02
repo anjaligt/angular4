@@ -25,7 +25,7 @@
 		getUsersList: function(req, res, next) {
            UserModel.getUsersList(req, function(err, paginatedResults, pageCount, itemCount){
 				if (err) {
-					 res.json({success: false, data: [], message: err});
+					 res.json({success: false, data: {}, message: err});
 				} else{
 					 res.json({
                         success: true,
