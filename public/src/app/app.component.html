@@ -29,7 +29,7 @@
       <tr *ngFor="let user of usersList.data.items.docs">
         <td>{{user.email}}</td>
         <td>{{user.name}}</td>
-        <td><button class="btn btn-primary btn-xs" (click)="deleteUser(user.id)">Delete</button></td>
+        <td><button class="btn btn-primary btn-xs" (click)="deleteUser(user._id)">Delete</button></td>
        </tr>
     </tbody>
   </table>
