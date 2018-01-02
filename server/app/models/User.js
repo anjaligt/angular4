@@ -17,6 +17,7 @@
     userSchema = new Schema({
         access_token: { type: String },
         user_type: { type: String, enum: ['admin', 'user'] },
+        name: {type:String},
         first_name: { type: String},
         last_name: { type: String},
         username: { type: String},
@@ -76,7 +77,7 @@
     userSchema.statics.createUser = function (req, callback) {
     var where = {'email': req.body.email, status: {$ne: 'deleted'}}, data,
             uniqueId = Math.floor(Math.random() * 1000000000);
-
+            console.log(req.body);
     User.findOne(where, function (err, user) {
       if (err) {
         callback(err);
