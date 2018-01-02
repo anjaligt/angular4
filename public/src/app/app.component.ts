@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
   * Function for delete user
   */
   deleteUser(id){
-  	 this.http.delete('http://localhost:2149/api/users/user/'+id).subscribe(result => {
+    this.http.delete('http://localhost:2149/api/users/user/admin/'+id).subscribe(result => {
      this.ngOnInit();
     });    
   }
