@@ -7,6 +7,7 @@
 
 # dependencies
 server/node_modules
+public/node_modules
 public/e2e
 
 # IDEs and editors

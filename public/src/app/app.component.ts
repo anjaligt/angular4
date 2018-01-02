@@ -16,8 +16,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.http.get('http://localhost:2149/api/users/users_list').subscribe(result => {
+      console.log(result);
       this.usersList = result.data.items.docs;	
-      console.log(this.usersList);
+      
       
     });
     // Model driven form
