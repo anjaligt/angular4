@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import {VERSION, MatDialog, MatDialogRef} from '@angular/material';
 
+import { DialogDemoComponent } from './dialog-demo/dialog-demo.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,15 +13,29 @@ export class AppComponent implements OnInit {
   title = 'app';
   usersList = {};
   myform;
-  constructor(private http: HttpClient){
+
+  version = VERSION;
+
+  fileNameDialogRef: MatDialogRef<DialogDemoComponent>;
+  constructor(private http: HttpClient,public dialog: MatDialog){
   }
   
-  constructor(public dialog: MdDialog) {}
 
-  updateUser() {
-    let dialogRef = this.dialog.open(DialogResultExampleDialog);
+  updateUser(user) {
+
+
+
+    let dialogRef = this.dialog.open(DialogDemoComponent, {
+  height: '400px',
+  width: '600px',
+  data:{
+    user:user
+  }
+}
+);
     dialogRef.afterClosed().subscribe(result => {
-      this.selectedOption = result;
+      //this.selectedOption = result;
+      console.log(result);
     });
   }
 
@@ -64,6 +79,8 @@ export class AppComponent implements OnInit {
 
 
 }
+
+export class DialogContentExampleDialog {}
 
 /*@Component({
   selector: 'dialog-result-example-dialog',
