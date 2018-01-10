@@ -23,15 +23,13 @@ export class AppComponent implements OnInit {
 
   updateUser(user) {
 
-
-
     let dialogRef = this.dialog.open(DialogDemoComponent, {
-  height: '400px',
-  width: '600px',
-  data:{
-    user:user
-  }
-}
+            height: '400px',
+            width: '600px',
+            data:{
+              user:user
+            }
+          }
 );
     dialogRef.afterClosed().subscribe(result => {
       //this.selectedOption = result;
