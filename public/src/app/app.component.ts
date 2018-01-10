@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,15 @@ export class AppComponent implements OnInit {
   usersList = {};
   myform;
   constructor(private http: HttpClient){
+  }
+  
+  constructor(public dialog: MdDialog) {}
+
+  updateUser() {
+    let dialogRef = this.dialog.open(DialogResultExampleDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+    });
   }
 
   ngOnInit() {
@@ -54,3 +64,13 @@ export class AppComponent implements OnInit {
 
 
 }
+
+/*@Component({
+  selector: 'dialog-result-example-dialog',
+  templateUrl: './dialog-result-example-dialog.html',
+})*/
+
+/*export class DialogResultExampleDialog {
+  constructor(public dialogRef: MdDialogRef<DialogResultExampleDialog>) {}
+}
+*/
